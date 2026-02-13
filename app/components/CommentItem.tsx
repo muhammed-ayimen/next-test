@@ -18,8 +18,8 @@ export default function CommentItem({
   likeNum,
 }: CommentItemProps) {
   return (
-    <div className="flex gap-3 py-3 border-b border-zinc-800 last:border-b-0">
-      <div className="shrink-0 w-8 h-8 rounded-full overflow-hidden bg-zinc-800">
+    <div className="flex gap-3 py-3 border-b border-zinc-200 dark:border-zinc-800 last:border-b-0">
+      <div className="shrink-0 w-8 h-8 rounded-full overflow-hidden bg-zinc-200 dark:bg-zinc-800">
         {userAvatar ? (
           <Image
             src={userAvatar}
@@ -37,7 +37,7 @@ export default function CommentItem({
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-sm font-medium text-zinc-200 truncate">
+          <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200 truncate">
             {userName ?? '匿名'}
           </span>
           {createdAt && (
@@ -46,7 +46,7 @@ export default function CommentItem({
             </span>
           )}
         </div>
-        <p className="text-sm text-zinc-400 break-words">{contents ?? ''}</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 break-words">{contents ?? ''}</p>
         {likeNum != null && likeNum > 0 && (
           <span className="text-xs text-zinc-500 mt-1 inline-flex items-center gap-1">
             <Heart className="w-3 h-3 fill-amber-500 text-amber-500" />

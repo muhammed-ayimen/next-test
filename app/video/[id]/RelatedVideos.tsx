@@ -15,8 +15,8 @@ export default async function RelatedVideos() {
   }
 
   return (
-    <div className="border-t border-zinc-800 pt-12">
-      <h2 className="text-2xl font-bold text-white mb-8">おすすめの動画</h2>
+    <div className="border-t border-zinc-200 dark:border-zinc-800 pt-12">
+      <h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-8">おすすめの動画</h2>
       <CategoryRow
         categoryId={randomCategory.category.id}
         categoryName={randomCategory.category.name}

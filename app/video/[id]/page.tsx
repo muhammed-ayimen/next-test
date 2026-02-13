@@ -72,7 +72,7 @@ export default async function VideoDetailPage({
 
       <div className="flex flex-col lg:flex-row lg:flex-wrap gap-6 lg:gap-8 mb-12 @container/video-row">
         <div className="flex-1 min-w-0 order-1 lg:order-1">
-          <div className="relative aspect-video rounded-lg overflow-hidden bg-zinc-800 ring-1 ring-zinc-700/50">
+          <div className="relative aspect-video rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-800 ring-1 ring-zinc-300/50 dark:ring-zinc-700/50">
             {video.landscapeThumbnail ? (
               <Image
                 src={getImageSrc(video.landscapeThumbnail)}
@@ -96,7 +96,7 @@ export default async function VideoDetailPage({
         </aside>
 
         <div className="w-full order-2 lg:order-3 lg:basis-full">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4 leading-tight">
             {video.title ?? '無題'}
           </h1>
 
@@ -118,8 +118,8 @@ export default async function VideoDetailPage({
 
           {video.description && (
             <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-white">概要</h2>
-              <p className="text-zinc-300 leading-relaxed whitespace-pre-line text-base">
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-white">概要</h2>
+              <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed whitespace-pre-line text-base">
                 {video.description}
               </p>
             </div>

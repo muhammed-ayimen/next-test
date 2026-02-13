@@ -1,6 +1,13 @@
 @import 'tailwindcss';
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
+  --background: #fafafa;
+  --foreground: #141414;
+}
+
+.dark {
   --background: #141414;
   --foreground: #fafafa;
 }
@@ -32,9 +39,13 @@ body {
   display: none;
 }
 
-/* Custom dark scrollbar */
+/* Custom scrollbar */
 .scrollbar-custom {
   scrollbar-width: thin;
+  scrollbar-color: #a1a1aa #e4e4e7;
+}
+
+.dark .scrollbar-custom {
   scrollbar-color: #52525b rgb(24 24 27);
 }
 
@@ -43,19 +54,35 @@ body {
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
-  background: rgb(24 24 24);
+  background: #e4e4e7;
   border-radius: 3px;
+}
+
+.dark .scrollbar-custom::-webkit-scrollbar-track {
+  background: rgb(24 24 24);
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
-  background: rgb(82 82 91);
+  background: #a1a1aa;
   border-radius: 3px;
 }
 
+.dark .scrollbar-custom::-webkit-scrollbar-thumb {
+  background: rgb(82 82 91);
+}
+
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
+.dark .scrollbar-custom::-webkit-scrollbar-thumb:hover {
   background: rgb(113 113 122);
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb:active {
+  background: #52525b;
+}
+
+.dark .scrollbar-custom::-webkit-scrollbar-thumb:active {
   background: rgb(161 161 170);
 }

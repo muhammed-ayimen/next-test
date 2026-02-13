@@ -98,7 +98,7 @@ export default function CategoryRow({
     return (
       <section ref={sectionRef}>
         <div className="flex items-baseline justify-between mb-4">
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
             {categoryName ?? 'カテゴリー'}
           </h2>
           <Link
@@ -130,7 +130,7 @@ export default function CategoryRow({
   return (
     <section ref={sectionRef}>
       <div className="flex items-baseline justify-between mb-4">
-        <h2 className="text-xl font-bold text-white">
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
           {categoryName ?? 'Category'}
         </h2>
         <Link
@@ -176,7 +176,7 @@ export default function CategoryRow({
             {videos.map((video, index) => (
               <div
                 key={video.id}
-                className="flex-none w-[45%] sm:w-[30%] md:w-[23%] lg:w-[18%]"
+                className="flex-none w-[45%] sm:w-[30%] md:w-[23%] lg:w-[18%] overflow-hidden rounded-lg"
               >
                 <VideoCard {...video} priority={priority && index < 6} />
               </div>

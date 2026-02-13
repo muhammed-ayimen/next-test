@@ -69,7 +69,7 @@ export default async function CategoryPage({
         ]}
       />
 
-      <h1 className="text-3xl font-bold text-white mb-8">
+      <h1 className="text-3xl font-bold text-zinc-900 dark:text-white mb-8">
         {category.name ?? 'カテゴリー'}
       </h1>
 
