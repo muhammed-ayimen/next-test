@@ -1,4 +1,5 @@
 import { fetchHomeScreens } from '@/lib/graphql/server';
+import CategoryRow from './components/CategoryRow';
 
 export default async function HomePage() {
   const homeScreens = await fetchHomeScreens();
@@ -18,6 +19,21 @@ export default async function HomePage() {
           <p className="text-zinc-500 mb-4">
             コンテンツを読み込めませんでした。
           </p>
+        </div>
+      )}
+
+      {homeScreens && (
+        <div className="space-y-14 pb-16">
+          {homeScreens
+            .filter((screen) => screen.category)
+            .map((screen, index) => (
+              <CategoryRow
+                key={screen.id}
+                categoryId={screen.category!.id}
+                categoryName={screen.category!.name}
+                priority={index === 0}
+              />
+            ))}
         </div>
       )}
     </main>
