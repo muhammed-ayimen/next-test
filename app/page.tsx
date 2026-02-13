@@ -1,4 +1,7 @@
+import { fetchHomeScreens } from '@/lib/graphql/server';
+
 export default async function HomePage() {
+  const homeScreens = await fetchHomeScreens();
   return (
     <main className="max-w-[1400px] mx-auto px-6">
       <section className="pt-14 pb-10 md:pt-20 md:pb-12">
@@ -9,6 +12,14 @@ export default async function HomePage() {
           カテゴリごとに映画を探せます
         </p>
       </section>
+
+      {!homeScreens && (
+        <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
+          <p className="text-zinc-500 mb-4">
+            コンテンツを読み込めませんでした。
+          </p>
+        </div>
+      )}
     </main>
   );
 }

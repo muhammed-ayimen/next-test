@@ -4,7 +4,9 @@ import {
   type GetHomeScreensQuery,
 } from './generated/graphql';
 
-const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || '';
+const GRAPHQL_ENDPOINT =
+  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ||
+  'https://develop.api.samansa.com/graphql';
 
 export async function fetchHomeScreens(): Promise<
   GetHomeScreensQuery['homeScreens'] | null
