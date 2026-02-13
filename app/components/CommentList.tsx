@@ -2,7 +2,7 @@
 
 import { GetVideoCommentsDocument } from '@/lib/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
-
+import { useTranslations } from 'next-intl';
 import { MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 import CommentItem from './CommentItem';
@@ -13,6 +13,8 @@ interface CommentListProps {
 
 export default function CommentList({ videoId }: CommentListProps) {
   const [loadingMore, setLoadingMore] = useState(false);
+  const t = useTranslations('comments');
+  const tCommon = useTranslations('common');
 
   const { data, loading, error, fetchMore } = useQuery(
     GetVideoCommentsDocument,
@@ -72,7 +74,7 @@ export default function CommentList({ videoId }: CommentListProps) {
     return (
       <div className="rounded-lg bg-zinc-100 dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 p-5 text-center">
         <p className="text-zinc-500 text-sm">
-          コメントを読み込めませんでした。
+          {t('loadError')}
         </p>
       </div>
     );
@@ -81,7 +83,7 @@ export default function CommentList({ videoId }: CommentListProps) {
   return (
     <div className="h-full min-h-0 flex flex-col rounded-lg bg-zinc-100 dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 p-5 overflow-hidden">
       <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 shrink-0">
-        コメント ({data?.videoComments.allCount ?? 0})
+        {t('heading')} ({data?.videoComments.allCount ?? 0})
       </h3>
 
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
@@ -107,7 +109,7 @@ export default function CommentList({ videoId }: CommentListProps) {
                 disabled={loadingMore}
                 className="w-full mt-4 py-2 text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-lg transition-colors disabled:opacity-50"
               >
-                {loadingMore ? '読み込み中...' : 'もっと見る'}
+                {loadingMore ? tCommon('loading') : t('loadMore')}
               </button>
             )}
           </>
@@ -118,7 +120,7 @@ export default function CommentList({ videoId }: CommentListProps) {
               strokeWidth={1.5}
             />
             <p className="text-zinc-500 text-sm text-center">
-              まだコメントがありません。
+              {t('noComments')}
             </p>
           </div>
         )}

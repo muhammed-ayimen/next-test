@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Header from './components/Header';
+import { getLocale } from 'next-intl/server';
 import './globals.css';
-import { Providers } from './providers';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -15,24 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Samansa - 映画情報サービス',
-  description: 'カテゴリ別に映画を探して、詳細やコメントをチェックしよう',
+  title: 'Samansa',
+  description: 'Samansa',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen`}
       >
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
+        {children}
       </body>
     </html>
   );

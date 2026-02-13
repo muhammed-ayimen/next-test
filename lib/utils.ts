@@ -12,9 +12,9 @@ export function getImageSrc(url: string): string {
   return url;
 }
 
-export function formatDate(isoString: string): string {
+export function formatDate(isoString: string, locale = 'ja-JP'): string {
   const date = new Date(isoString);
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',

@@ -1,4 +1,7 @@
+'use client';
+
 import { formatDuration, getImageSrc } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,6 +20,8 @@ export default function VideoCard({
   duration,
   priority = false,
 }: VideoCardProps) {
+  const t = useTranslations('common');
+  const tVideo = useTranslations('video');
   const durationStr = duration ? formatDuration(duration) : '';
 
   return (
@@ -26,7 +31,7 @@ export default function VideoCard({
           {landscapeThumbnail ? (
             <Image
               src={getImageSrc(landscapeThumbnail)}
-              alt={title ?? '動画'}
+              alt={title ?? tVideo('alt')}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -44,7 +49,7 @@ export default function VideoCard({
 
           <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
             <p className="truncate text-sm font-medium [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">
-              {title ?? 'Untitled'}
+              {title ?? t('untitled')}
             </p>
           </div>
 
