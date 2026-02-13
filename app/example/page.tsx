@@ -9,8 +9,16 @@ import {
 import { useQuery } from '@apollo/client';
 import { NextPage } from 'next';
 
+const firstCategoryId = '2';
+
 const Page: NextPage = () => {
   const { data: homeScreenData } = useQuery(GetHomeScreensDocument);
+  const firstCategoryIdFromHome =
+    homeScreenData?.homeScreens?.[0]?.category?.id ?? firstCategoryId;
+  const { data: homeCategoryData } = useQuery(GetCategoryDocument, {
+    variables: { id: firstCategoryIdFromHome },
+    skip: !homeScreenData,
+  });
   const { data: VideoData } = useQuery(GetOriginalVideoDocument, {
     variables: { id: '1480' },
   });
@@ -24,15 +32,24 @@ const Page: NextPage = () => {
     variables: { id: '2' },
   });
 
-  if (!homeScreenData || !VideoData || !videoCommentsData || !categoryData)
+  if (
+    !homeScreenData ||
+    !homeCategoryData ||
+    !VideoData ||
+    !videoCommentsData ||
+    !categoryData
+  )
     return <div>Loading...</div>;
+
+  const firstScreen = homeScreenData.homeScreens[0];
+  const homeVideos = homeCategoryData?.category?.videos ?? [];
 
   return (
     <div className="flex gap-4">
       <div>
         <h2>Home Screen</h2>
-        {homeScreenData.homeScreens[0].category?.name}
-        {homeScreenData.homeScreens[0].videos?.map((video) => (
+        {firstScreen.category?.name}
+        {homeVideos.map((video) => (
           <div key={video.id}>
             <div>{video.title}</div>
           </div>

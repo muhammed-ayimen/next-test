@@ -1,9 +1,9 @@
 'use client';
 
+import { Link } from '@/lib/navigation';
 import { formatDuration, getImageSrc } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface VideoCardProps {
   id: string;

@@ -1,5 +1,5 @@
+import { Link } from '@/lib/navigation';
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
 
 export type BreadcrumbItem = {
   label: string;
