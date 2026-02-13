@@ -11,3 +11,12 @@ export function getImageSrc(url: string): string {
   if (url.startsWith('//')) return `https:${url}`;
   return url;
 }
+
+export function formatDate(isoString: string): string {
+  const date = new Date(isoString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
