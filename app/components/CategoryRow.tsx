@@ -1,9 +1,9 @@
 'use client';
 
+import { Link } from '@/lib/navigation';
 import { GetCategoryDocument } from '@/lib/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import ScrollNavButton from './ScrollNavButton';
 import VideoCard from './VideoCard';
