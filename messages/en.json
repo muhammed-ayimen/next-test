@@ -1,0 +1,48 @@
+{
+  "common": {
+    "untitled": "Untitled",
+    "anonymous": "Anonymous",
+    "loading": "Loading...",
+    "home": "Home"
+  },
+  "header": {
+    "serviceDescription": "Movie Info Service"
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "home": {
+    "heading": "Discover Movies",
+    "subtitle": "Browse movies by category",
+    "loadError": "Failed to load content."
+  },
+  "video": {
+    "alt": "Video",
+    "movieThumbnailAlt": "Movie thumbnail",
+    "overview": "Overview",
+    "home": "Home",
+    "videoFallback": "Video",
+    "notFoundTitle": "Video not found - Samansa",
+    "watchOnSamansa": "Watch this video on Samansa",
+    "relatedVideos": "Recommended Videos"
+  },
+  "category": {
+    "fallbackName": "Category",
+    "home": "Home",
+    "seeAll": "See all →",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right",
+    "notFoundTitle": "Category not found - Samansa",
+    "noVideos": "No videos in this category."
+  },
+  "comments": {
+    "heading": "Comments",
+    "loadError": "Failed to load comments.",
+    "loadMore": "Load more",
+    "noComments": "No comments yet."
+  },
+  "nav": {
+    "breadcrumbLabel": "Breadcrumb"
+  }
+}

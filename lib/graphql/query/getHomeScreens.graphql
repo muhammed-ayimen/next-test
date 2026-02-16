@@ -5,14 +5,5 @@ query getHomeScreens {
       id
       name
     }
-    videos {
-      id
-      title
-      duration {
-        minutes
-        seconds
-      }
-      landscapeThumbnail
-    }
   }
 }

@@ -1,0 +1,48 @@
+{
+  "common": {
+    "untitled": "無題",
+    "anonymous": "匿名",
+    "loading": "読み込み中...",
+    "home": "ホーム"
+  },
+  "header": {
+    "serviceDescription": "映画情報サービス"
+  },
+  "theme": {
+    "switchToLight": "ライトモードに切り替え",
+    "switchToDark": "ダークモードに切り替え"
+  },
+  "home": {
+    "heading": "Discover Movies",
+    "subtitle": "カテゴリごとに映画を探せます",
+    "loadError": "コンテンツを読み込めませんでした。"
+  },
+  "video": {
+    "alt": "動画",
+    "movieThumbnailAlt": "映画のサムネイル",
+    "overview": "概要",
+    "home": "ホーム",
+    "videoFallback": "動画",
+    "notFoundTitle": "動画が見つかりません - Samansa",
+    "watchOnSamansa": "Samansaで動画を視聴",
+    "relatedVideos": "おすすめの動画"
+  },
+  "category": {
+    "fallbackName": "カテゴリー",
+    "home": "ホーム",
+    "seeAll": "すべて見る →",
+    "scrollLeft": "左にスクロール",
+    "scrollRight": "右にスクロール",
+    "notFoundTitle": "カテゴリーが見つかりません - Samansa",
+    "noVideos": "このカテゴリーには動画がありません。"
+  },
+  "comments": {
+    "heading": "コメント",
+    "loadError": "コメントを読み込めませんでした。",
+    "loadMore": "もっと見る",
+    "noComments": "まだコメントがありません。"
+  },
+  "nav": {
+    "breadcrumbLabel": "パンくずリスト"
+  }
+}
