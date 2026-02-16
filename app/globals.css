@@ -31,3 +31,31 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Custom dark scrollbar */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #52525b rgb(24 24 27);
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: rgb(24 24 24);
+  border-radius: 3px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: rgb(82 82 91);
+  border-radius: 3px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: rgb(113 113 122);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:active {
+  background: rgb(161 161 170);
+}
