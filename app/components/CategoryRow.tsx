@@ -2,6 +2,7 @@
 
 import { GetCategoryDocument } from '@/lib/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import ScrollNavButton from './ScrollNavButton';
@@ -26,6 +27,7 @@ export default function CategoryRow({
     left: false,
     right: false,
   });
+  const t = useTranslations('category');
 
   const { data, loading, error } = useQuery(GetCategoryDocument, {
     variables: { id: categoryId },
@@ -98,14 +100,14 @@ export default function CategoryRow({
     return (
       <section ref={sectionRef}>
         <div className="flex items-baseline justify-between mb-4">
-          <h2 className="text-xl font-bold text-white">
-            {categoryName ?? 'カテゴリー'}
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+            {categoryName ?? t('fallbackName')}
           </h2>
           <Link
             href={`/category/${categoryId}`}
             className="text-sm font-medium text-amber-500 hover:text-amber-400 transition-colors"
           >
-            すべて見る →
+            {t('seeAll')}
           </Link>
         </div>
         <div className="flex gap-3 md:gap-4 overflow-hidden">
@@ -130,14 +132,14 @@ export default function CategoryRow({
   return (
     <section ref={sectionRef}>
       <div className="flex items-baseline justify-between mb-4">
-        <h2 className="text-xl font-bold text-white">
-          {categoryName ?? 'Category'}
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+          {categoryName ?? t('fallbackName')}
         </h2>
         <Link
           href={`/category/${categoryId}`}
           className="text-sm font-medium text-amber-500 hover:text-amber-400 transition-colors"
         >
-          すべて見る →
+          {t('seeAll')}
         </Link>
       </div>
 
@@ -158,14 +160,14 @@ export default function CategoryRow({
             <ScrollNavButton
               direction="left"
               onClick={() => scroll('left')}
-              label="Scroll left"
+              label={t('scrollLeft')}
             />
           )}
           {arrowVisibility.right && (
             <ScrollNavButton
               direction="right"
               onClick={() => scroll('right')}
-              label="Scroll right"
+              label={t('scrollRight')}
             />
           )}
 
@@ -176,7 +178,7 @@ export default function CategoryRow({
             {videos.map((video, index) => (
               <div
                 key={video.id}
-                className="flex-none w-[45%] sm:w-[30%] md:w-[23%] lg:w-[18%]"
+                className="flex-none w-[45%] sm:w-[30%] md:w-[23%] lg:w-[18%] overflow-hidden rounded-lg"
               >
                 <VideoCard {...video} priority={priority && index < 6} />
               </div>

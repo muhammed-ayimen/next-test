@@ -1,5 +1,8 @@
+'use client';
+
 import { formatDate } from '@/lib/utils';
 import { Heart } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 interface CommentItemProps {
@@ -17,9 +20,12 @@ export default function CommentItem({
   createdAt,
   likeNum,
 }: CommentItemProps) {
+  const t = useTranslations('common');
+  const locale = useLocale();
+
   return (
-    <div className="flex gap-3 py-3 border-b border-zinc-800 last:border-b-0">
-      <div className="shrink-0 w-8 h-8 rounded-full overflow-hidden bg-zinc-800">
+    <div className="flex gap-3 py-3 border-b border-zinc-200 dark:border-zinc-800 last:border-b-0">
+      <div className="shrink-0 w-8 h-8 rounded-full overflow-hidden bg-zinc-200 dark:bg-zinc-800">
         {userAvatar ? (
           <Image
             src={userAvatar}
@@ -37,16 +43,16 @@ export default function CommentItem({
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-sm font-medium text-zinc-200 truncate">
-            {userName ?? '匿名'}
+          <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200 truncate">
+            {userName ?? t('anonymous')}
           </span>
           {createdAt && (
             <span className="text-xs text-zinc-600 shrink-0">
-              {formatDate(createdAt)}
+              {formatDate(createdAt, locale === 'ja' ? 'ja-JP' : 'en-US')}
             </span>
           )}
         </div>
-        <p className="text-sm text-zinc-400 break-words">{contents ?? ''}</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 break-words">{contents ?? ''}</p>
         {likeNum != null && likeNum > 0 && (
           <span className="text-xs text-zinc-500 mt-1 inline-flex items-center gap-1">
             <Heart className="w-3 h-3 fill-amber-500 text-amber-500" />

@@ -1,4 +1,7 @@
+'use client';
+
 import { formatDuration, getImageSrc } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,16 +20,18 @@ export default function VideoCard({
   duration,
   priority = false,
 }: VideoCardProps) {
+  const t = useTranslations('common');
+  const tVideo = useTranslations('video');
   const durationStr = duration ? formatDuration(duration) : '';
 
   return (
-    <Link href={`/video/${id}`} className="group block">
-      <div className="relative aspect-video rounded-lg bg-zinc-900 transition-all duration-300 hover:shadow-xl hover:shadow-black/50">
-        <div className="relative h-full w-full overflow-hidden rounded-lg">
+    <Link href={`/video/${id}`} className="group block overflow-hidden rounded-lg">
+      <div className="relative aspect-video overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-900 transition-all duration-300 hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-black/50">
+        <div className="relative h-full w-full overflow-hidden rounded-lg [contain:paint]">
           {landscapeThumbnail ? (
             <Image
               src={getImageSrc(landscapeThumbnail)}
-              alt={title ?? '動画'}
+              alt={title ?? tVideo('alt')}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -35,20 +40,17 @@ export default function VideoCard({
               unoptimized
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-zinc-800 text-zinc-500">
+            <div className="flex h-full w-full items-center justify-center bg-zinc-200 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500">
               <span className="text-4xl">🎬</span>
             </div>
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
-          <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <p className="truncate text-sm font-medium drop-shadow-lg">
-              {title ?? 'Untitled'}
+          <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+            <p className="truncate text-sm font-medium [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">
+              {title ?? t('untitled')}
             </p>
-            {durationStr && (
-              <span className="text-xs text-zinc-300">{durationStr}</span>
-            )}
           </div>
 
           {durationStr && (
